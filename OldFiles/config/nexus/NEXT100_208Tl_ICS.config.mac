@@ -1,0 +1,27 @@
+# verbosity
+/control/verbose  1
+/run/verbose      1
+/event/verbose    0
+/tracking/verbose 0
+
+# generator
+/Generator/IonGenerator/atomic_number 81
+/Generator/IonGenerator/mass_number 208
+/Generator/IonGenerator/region "ICS"
+
+# actions
+/Actions/DefaultEventAction/energy_threshold 2.0 MeV
+
+# geometry
+/Geometry/PmtR11410/time_binning 25. nanosecond
+/Geometry/Next100/sipm_time_binning 1. microsecond
+
+/Geometry/Next100/max_step_size     1. mm
+/Geometry/Next100/pressure          13.5 bar
+/Geometry/Next100/elfield           false
+
+# persistency
+/nexus/random_seed            1
+/nexus/persistency/start_id   0
+/nexus/persistency/outputFile nexus_Tl208_ICS
+/nexus/persistency/eventType  background
