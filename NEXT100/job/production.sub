@@ -32,7 +32,7 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(job
 +JobDurationCategory = "Medium"
 
 # Use a singularity image to submit the file. The image should be stored in the protected area of your workspace
-+SingularityImage = "$(OSDF_LOCATION)/containers/icnexusv3.sif"
++SingularityImage = "$(OSDF_LOCATION)/containers/icnexusv7.sif"
 
 
 # Tell HTCondor requirements (e.g., operating system) your job needs, 
