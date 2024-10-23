@@ -13,7 +13,7 @@ HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
 #NewProcess = $INT(newjobid, %d)
 NewProcess = $(Process)
 
-executable = $(jobname)_job.sh
+executable = $(jobname).sh
 arguments = $(NewProcess) $(jobname)
 
 # Specify the name of the log, standard error, and standard output (or "screen output") files. Wherever you see $(Cluster), HTCondor will insert the 
