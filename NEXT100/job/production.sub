@@ -3,9 +3,6 @@
 # The job title here.
 jobname=NEXT100_Kr83m
 
-CONFIG=$(jobname).config.mac
-INIT=$(jobname).init.mac
-
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
 HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
 
