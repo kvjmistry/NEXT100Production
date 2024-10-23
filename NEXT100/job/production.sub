@@ -37,10 +37,10 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(job
 requirements = (Arch == "X86_64")
 request_cpus = 1
 request_memory = 4GB
-request_disk = 5GB
+request_disk = 6GB
 
 # If submitting more than 10k jobs use this statement
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 2000
+queue 2500
