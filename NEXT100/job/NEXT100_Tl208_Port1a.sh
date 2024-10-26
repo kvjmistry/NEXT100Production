@@ -22,7 +22,7 @@ tar -xvf files.tar
 rm files.tar
 
 # Set the configurable variables
-N_EVENTS=100
+N_EVENTS=5000
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 
