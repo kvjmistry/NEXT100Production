@@ -22,7 +22,7 @@ tar -xvf files.tar
 rm files.tar
 
 # Set the configurable variables
-N_EVENTS=5000
+N_EVENTS=100
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 
@@ -43,13 +43,14 @@ cat ${CONFIG}
 # Generation + Reco
 echo "Running NEXUS and IC" 
 nexus -n $N_EVENTS ${INIT}
-python compress_nexus.py NEXT100_Kr83m.h5 NEXT100_Kr83m_nexus_${JOBID}.h5
-city detsim   detsimTemplate.conf   -i NEXT100_Kr83m_nexus_${JOBID}.h5    -o NEXT100_Kr83m_detsim_${JOBID}.h5
-city hypathia hypathiaTemplate.conf -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT100_Kr83m_hypathia_${JOBID}.h5
-city dorothea dorotheaTemplate.conf -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_dorothea_${JOBID}.h5
+python compress_nexus.py NEXT100_Tl208_Port1a.h5 NEXT100_Tl208_Port1a_nexus_${JOBID}.h5
+city detsim    detsimTemplate.conf    -i NEXT100_Tl208_Port1a_nexus_${JOBID}.h5    -o NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
+city hypathia  hypathiaTemplate.conf  -i NEXT100_Tl208_Port1a_detsim_${JOBID}.h5   -o NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
+city sophronia sophroniaTemplate.conf -i NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5 -o NEXT100_Tl208_Port1a_sophronia_${JOBID}.h5
 
-rm NEXT100_Kr83m.h5
-rm NEXT100_Kr83m_detsim_${JOBID}.h5
+rm NEXT100_Tl208_Port1a.h5
+rm NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
+rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
 rm *LT*
 rm *PSF*
 rm *map*
@@ -57,7 +58,7 @@ rm *map*
 ls -ltrh
 
 echo "Taring the h5 files"
-tar -cvf NEXT100_Kr83m.tar *.h5
+tar -cvf NEXT100_Tl208_Port1a.tar *.h5
 
 # Cleanup
 rm *.h5

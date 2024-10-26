@@ -1,0 +1,37 @@
+## ----------------------------------------------------------------------------
+## nexus | NEXT100_GS.config.mac
+##
+## Configuration macro to simulate decays of the Th calibration source
+## from one of the vessel ports in the NEXT-100 detector. Using GS Model
+##
+## The NEXT Collaboration
+## ----------------------------------------------------------------------------
+
+##### VERBOSITY #####
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+/process/em/verbose 0
+
+##### GEOMETRY #####
+/Geometry/Next100/pressure 4 bar
+/Geometry/Next100/elfield false
+/Geometry/Next100/max_step_size 1. mm
+/Geometry/Next100/th_source new_source 
+/Geometry/Next100/gas depletedXe
+/Geometry/PmtR11410/time_binning 25. nanosecond
+/Geometry/Next100/sipm_time_binning  1. microsecond
+
+##### GENERATOR #####
+/Generator/IonGenerator/atomic_number 81
+/Generator/IonGenerator/mass_number 208
+/Generator/IonGenerator/region PORT_1a
+
+/Actions/DefaultEventAction/min_energy 1.0 MeV
+/Actions/DefaultEventAction/max_energy 2.8 MeV
+
+##### PERSISTENCY #####
+/nexus/persistency/output_file Next100_Tl208_Port1a
+/nexus/random_seed            9800
+/nexus/persistency/start_id   9800

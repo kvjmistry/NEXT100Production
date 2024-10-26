@@ -1,7 +1,8 @@
 # nexus.sub
 
 # The job title here.
-jobname=NEXT100_Kr83m
+# jobname=NEXT100_Kr83m
+jobname=NEXT100_Tl208_Port1a
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
 HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
@@ -29,7 +30,7 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(job
 +JobDurationCategory = "Medium"
 
 # Use a singularity image to submit the file. The image should be stored in the protected area of your workspace
-+SingularityImage = "$(OSDF_LOCATION)/containers/icnexusv7.sif"
++SingularityImage = "$(OSDF_LOCATION)/containers/icnexusv8.sif"
 
 
 # Tell HTCondor requirements (e.g., operating system) your job needs, 
