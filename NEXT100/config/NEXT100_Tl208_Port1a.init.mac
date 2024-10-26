@@ -23,4 +23,4 @@
 /nexus/RegisterEventAction DefaultEventAction
 /nexus/RegisterTrackingAction DefaultTrackingAction
 
-/nexus/RegisterMacro NEXT100_Tl208_port1a.config.mac
+/nexus/RegisterMacro NEXT100_Tl208_Port1a.config.mac
