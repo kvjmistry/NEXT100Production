@@ -37,7 +37,7 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(job
 
 # Tell HTCondor requirements (e.g., operating system) your job needs, 
 # what amount of compute resources each job will need on the computer where it runs.
-requirements = (Arch == "X86_64")
+requirements = (Arch == "X86_64" && TARGET.GLIDEIN_ResourceName =!= "Lehigh - Hawk" && TARGET.GLIDEIN_ResourceName =!= "UA-LR-ITS-EP")
 request_cpus = 1
 request_memory = 4GB
 request_disk = 6GB
