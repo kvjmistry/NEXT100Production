@@ -8,6 +8,10 @@ echo "The JOBID number is: ${JOBID}"
 JOBNAME=$2
 echo "The JOBNAME number is: ${JOBNAME}" 
 
+PRESSURE=$3
+echo "The pressure is: ${PRESSURE}" 
+
+
 echo "JOBID $1 running on `whoami`@`hostname`"
 
 start=`date +%s`
@@ -18,8 +22,8 @@ source /software/nexus/setup_nexus.sh
 source /software/IC/setup_IC.sh
 
 echo "untaring files"
-tar -xvf files.tar
-rm files.tar
+tar -xvf files_${PRESSURE}.tar
+rm files_${PRESSURE}.tar
 
 # Set the configurable variables
 N_EVENTS=5000

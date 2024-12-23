@@ -14,7 +14,7 @@ pressure=4bar
 NewProcess = $(Process)
 
 executable = $(jobname).sh
-arguments = $(NewProcess) $(jobname)
+arguments = $(NewProcess) $(jobname) $(pressure)
 
 # Specify the name of the log, standard error, and standard output (or "screen output") files. Wherever you see $(Cluster), HTCondor will insert the 
 #  queue number assigned to this set of jobs at the time of submission.
@@ -23,7 +23,7 @@ error  = jobs/$(jobname)/jobid$(NewProcess)/$(Cluster)_$(NewProcess).err
 output = jobs/$(jobname)/jobid$(NewProcess)/$(Cluster)_$(NewProcess).out
 
 # Transfer input files
-transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files.tar
+transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar
 
 # Transfer output files
 transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(jobname)_$(Cluster)_$(NewProcess).tar"
@@ -46,4 +46,4 @@ request_disk = 6GB
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 2500
+queue 2000
