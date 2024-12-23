@@ -26,7 +26,7 @@ output = jobs/$(jobname)/jobid$(NewProcess)/$(Cluster)_$(NewProcess).out
 transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar
 
 # Transfer output files
-transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/$(jobname)/$(jobname)_$(Cluster)_$(NewProcess).tar"
+transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/Production/$(jobname)/$(jobname)_$(Cluster)_$(NewProcess).tar"
 
 # Specify Job duration category as "Medium" (expected runtime <10 hr) or "Long" (expected runtime <20 hr). 
 +JobDurationCategory = "Medium"
