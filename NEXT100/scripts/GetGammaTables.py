@@ -323,4 +323,4 @@ outfile = sys.argv[2]
 with pd.HDFStore(outfile, mode='w', complevel=5, complib='zlib') as store:
     # Save the new DataFrame under a unique key
     store.put(key='MC/GammaTable', value=gammaTables, format='table')
-    store.put(key='MC/gammaHistory', value=gammaHistorys, format='table')
+    store.put(key='MC/GammaHistory', value=gammaHistorys, format='table')
