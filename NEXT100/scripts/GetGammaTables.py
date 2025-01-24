@@ -2,8 +2,10 @@ import numpy as np
 import pandas as pd
 import sys
 
+pd.options.mode.chained_assignment = None  # Disable warning
+
 # ----------------------------------------------------------------------------------------------------
-def CallGetParentCreators(hits_merged, label):
+def CallGetParentCreators(hits_merged, parts_mothers, label):
 
     eioni = len(hits_merged[ (hits_merged.creator_proc == label)])
     while(eioni >0):
@@ -64,6 +66,9 @@ def MergeGroups(df, distance_threshold):
         for group in unique_groups:
             current_group_hits = df[df['group'] == group]
             other_hits = df[df['group'] != group]
+
+            if (len(other_hits) == 0 ):
+                continue
             
             for _, current_hit in current_group_hits.iterrows():
                 # Calculate distances to all other hits
@@ -115,7 +120,6 @@ def GetGroups(hits_merged):
         if (i == len(electrons)-1):
             electrons.at[i, "group"] = int(group_index)
 
-    # display(electrons)
     # Merge groups that have hits within 10 mm
     electrons = MergeGroups(electrons, 3)
 
@@ -165,7 +169,7 @@ def GetParentName(parts, id_):
 # Now we identify if any of the mother ids are electrons. If they are
 # then look for their mother to see what gamma they came from
 # also get information about how that gamma was made. e.g x-ray, radioactive decay (RD) or eBrem
-def GetElectronMother(grouped):
+def GetElectronMother(grouped, parts):
     new_labels = []
     mother_creator_procs = []
     for index, row in grouped.iterrows():
@@ -179,8 +183,6 @@ def GetElectronMother(grouped):
     grouped["mother_id"] = new_labels
     grouped["type"]= mother_creator_procs
 
-    print("printing before")
-    display(grouped)
 
     # Merge rows from duplicated entries
     grouped = grouped.groupby(['mother_id', 'creator_proc', 'group'], as_index=False).agg({
@@ -200,7 +202,7 @@ def GetElectronMother(grouped):
     return grouped
 
 # ----------------------------------------------------------------------------------------------------
-def GetMotherInfo(particle_id):
+def GetMotherInfo(particle_id, parts):
     mother = parts[parts.particle_id == particle_id]
     mother_name = mother.particle_name.item()
     mother_id = mother.mother_id.item()
@@ -211,7 +213,7 @@ def GetMotherInfo(particle_id):
 
 # ----------------------------------------------------------------------------------------------------
 # Get the particle tree up to the primary
-def GetHistories(grouped):
+def GetHistories(grouped, parts):
     history_df = pd.DataFrame()
 
     primary = 0
@@ -224,7 +226,7 @@ def GetHistories(grouped):
         interaction_type = grouped.iloc[index].type
         group_index = grouped.iloc[index].group.item()
         
-        mother_name, mother_id, energy, creator_proc, primary = GetMotherInfo(gamma_id)
+        mother_name, mother_id, energy, creator_proc, primary = GetMotherInfo(gamma_id, parts)
         
         history_df = pd.concat([
         history_df, 
@@ -238,7 +240,7 @@ def GetHistories(grouped):
         counter = counter+1
 
         while (not primary):
-            mother_name, mother_id, energy, creator_proc, primary = GetMotherInfo(mother_id)
+            mother_name, mother_id, energy, creator_proc, primary = GetMotherInfo(mother_id, parts)
             
             history_df = pd.concat([
             history_df, 
@@ -271,8 +273,8 @@ def ComputeBremTable(event):
     hits_merged  = pd.merge(hits, parts_mothers, on='particle_id', how='inner')
 
     # Replace ioni/msc labels with the parent interaction process. This tells us the gamma interaction that made the ionization.
-    hits_merged = CallGetParentCreators(hits_merged, "eIoni")
-    hits_merged = CallGetParentCreators(hits_merged, "msc")
+    hits_merged = CallGetParentCreators(hits_merged, parts_mothers, "eIoni")
+    hits_merged = CallGetParentCreators(hits_merged, parts_mothers, "msc")
 
     # Group the hits based on proximities
     grouped, electrons  = GetGroups(hits_merged)
@@ -280,10 +282,10 @@ def ComputeBremTable(event):
     # Now we identify if any of the mother ids are electrons. If they are
     # then look for their mother to see what gamma they came from
     # also get information about how that gamma was made. e.g x-ray, radioactive decay (RD) or eBrem
-    grouped = GetElectronMother(grouped)
+    grouped = GetElectronMother(grouped, parts)
 
     # Get the particle tree up to the primary, also add signal flag to the grouped df
-    grouped, history_df = GetHistories(grouped)
+    grouped, history_df = GetHistories(grouped, parts)
 
     # Some table formatting
     grouped_order = ['event_id', 'x', 'y', 'z', 'energy', 'gamma_id', 'interaction', 'group', 'type', 'signal']
@@ -305,7 +307,9 @@ gammaHistorys = []
 
 for index, eid in enumerate(events):
     print("On index, Event:", index, eid)
-    gammaTables, gammaHistorys  = ComputeBremTable(eid)
+    gammaTable, gammaHistory  = ComputeBremTable(eid)
+    gammaTables.append(gammaTable)
+    gammaHistorys.append(gammaHistory)
 
 gammaTables = pd.concat(gammaTables, axis=0)
 gammaHistorys = pd.concat(gammaHistorys, axis=0)
