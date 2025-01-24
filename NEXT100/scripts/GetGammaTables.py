@@ -296,8 +296,8 @@ def ComputeBremTable(event):
 # ----------------------------------------------------------------------------------------------------
 file = sys.argv[1]
 
-particles = pd.read_hdf(file, "parts")
-all_hits = pd.read_hdf(file, "hits")
+particles = pd.read_hdf(file, "MC/particles")
+all_hits = pd.read_hdf(file, "MC/hits")
 events = particles.event_id.unique()
 
 gammaTables = []
