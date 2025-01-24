@@ -52,12 +52,15 @@ city detsim    detsimTemplate.conf    -i NEXT100_Tl208_Port1a_nexus_${JOBID}.h5 
 city hypathia  hypathiaTemplate.conf  -i NEXT100_Tl208_Port1a_detsim_${JOBID}.h5   -o NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
 city sophronia sophroniaTemplate.conf -i NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5 -o NEXT100_Tl208_Port1a_sophronia_${JOBID}.h5
 
+python GetGammaTables.py NEXT100_Tl208_Port1a_sophronia_${JOBID}.h5 NEXT100_Tl208_Port1a_GammaTables_${JOBID}.h5
+
 rm NEXT100_Tl208_Port1a.h5
 rm NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
-rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
+# rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
 rm *LT*
 rm *PSF*
 rm *map*
+rm GetGammaTables.py
 
 ls -ltrh
 
