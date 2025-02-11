@@ -1,0 +1,43 @@
+## ----------------------------------------------------------------------------
+## nexus | NEXT100_Kr83m.config.mac
+##
+## config macro to generate Kr83m decays in NEXT 100 Active
+##
+## The NEXT Collaboration
+## ----------------------------------------------------------------------------
+
+/control/verbose  1
+/run/verbose      1
+/event/verbose    0
+/tracking/verbose 0
+
+# generator
+/Generator/Kr83mGenerator/region ACTIVE
+
+# geometry
+/Geometry/Next100/max_step_size  1.  mm
+/Geometry/Next100/pressure       4 bar
+/Geometry/Next100/elfield        true
+/Geometry/Next100/gas            depletedXe
+
+/Geometry/PmtR11410/time_binning     25. nanosecond
+/Geometry/Next100/sipm_time_binning  1. microsecond
+
+
+/Geometry/Next100/drift_v            0.87 mm/microsecond
+/Geometry/Next100/EL_drift_v         5.16 mm/microsecond
+/Geometry/Next100/drift_transv_diff  2.01 mm/sqrt(cm)
+/Geometry/Next100/drift_long_diff    0.58 mm/sqrt(cm)
+/Geometry/Next100/ELtransv_diff      0.38 mm/sqrt(cm)
+/Geometry/Next100/ELlong_diff        0.24 mm/sqrt(cm)
+/Geometry/Next100/EL_field           9    kV/cm
+
+# persistency
+/nexus/random_seed             100
+/nexus/persistency/start_id    100
+/nexus/persistency/output_file NEXT100_Kr83m_Full
+
+### PHYSICS
+/PhysicsList/Nexus/clustering           true
+/PhysicsList/Nexus/drift                true
+/PhysicsList/Nexus/electroluminescence  true

@@ -1,0 +1,26 @@
+## ----------------------------------------------------------------------------
+## nexus | NEXT100_Kr83m.init.mac
+##
+## Inint macro to generate Kr83m decays in NEXT 100 Active
+##
+## The NEXT Collaboration
+## ----------------------------------------------------------------------------
+# physics lists
+/PhysicsList/RegisterPhysics G4EmStandardPhysics_option4
+/PhysicsList/RegisterPhysics G4DecayPhysics
+/PhysicsList/RegisterPhysics G4RadioactiveDecayPhysics 
+/PhysicsList/RegisterPhysics G4StepLimiterPhysics
+/PhysicsList/RegisterPhysics NexusPhysics
+
+# geometry and generator
+/nexus/RegisterGeometry Next100
+/nexus/RegisterGenerator Kr83mGenerator
+
+# actions
+/nexus/RegisterRunAction      DefaultRunAction
+/nexus/RegisterEventAction    DefaultEventAction
+/nexus/RegisterTrackingAction DefaultTrackingAction
+
+# persistency
+/nexus/RegisterPersistencyManager PersistencyManager
+/nexus/RegisterMacro NEXT100_Kr83m_Full.config.mac

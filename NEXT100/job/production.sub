@@ -2,7 +2,8 @@
 
 # The job title here.
 # jobname=NEXT100_Kr83m
-jobname=NEXT100_Tl208_Port1a
+jobname=NEXT100_Kr83m_Full
+#jobname=NEXT100_Tl208_Port1a
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
 HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
@@ -46,4 +47,4 @@ request_disk = 6GB
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 2000
+queue 1000
