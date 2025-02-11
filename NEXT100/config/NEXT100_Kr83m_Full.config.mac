@@ -37,7 +37,9 @@
 /nexus/persistency/start_id    100
 /nexus/persistency/output_file NEXT100_Kr83m_Full
 
-### PHYSICS
+### PHYSICS
 /PhysicsList/Nexus/clustering           true
 /PhysicsList/Nexus/drift                true
 /PhysicsList/Nexus/electroluminescence  true
+
+/process/optical/processActivation Cerenkov false
