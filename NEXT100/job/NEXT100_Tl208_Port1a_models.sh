@@ -22,7 +22,7 @@ start=`date +%s`
 # Setup nexus
 echo "Setting Up Software" 
 source /software/nexus/setup_nexus.sh
-# source /software/IC/setup_IC.sh
+source /software/IC/setup_IC.sh
 
 echo "untaring files"
 tar -xvf files_${PRESSURE}.tar
