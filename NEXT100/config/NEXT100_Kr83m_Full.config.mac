@@ -31,6 +31,7 @@
 /Geometry/Next100/ELtransv_diff      0.38 mm/sqrt(cm)
 /Geometry/Next100/ELlong_diff        0.24 mm/sqrt(cm)
 /Geometry/Next100/EL_field           9    kV/cm
+/Geometry/Next100/e_lifetime         50 *ms
 
 # persistency
 /nexus/random_seed             100
