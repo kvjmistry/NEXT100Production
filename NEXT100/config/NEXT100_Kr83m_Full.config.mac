@@ -1,7 +1,7 @@
 ## ----------------------------------------------------------------------------
-## nexus | NEXT100_Kr83m.config.mac
+## nexus | NEXT100_Kr83m_Full.config.mac
 ##
-## config macro to generate Kr83m decays in NEXT 100 Active
+## config macro to generate Kr83m decays in NEXT 100 Active full sim
 ##
 ## The NEXT Collaboration
 ## ----------------------------------------------------------------------------
@@ -24,14 +24,29 @@
 /Geometry/Next100/sipm_time_binning  1. microsecond
 
 
-/Geometry/Next100/drift_v            0.87 mm/microsecond
-/Geometry/Next100/EL_drift_v         5.16 mm/microsecond
-/Geometry/Next100/drift_transv_diff  2.01 mm/sqrt(cm)
-/Geometry/Next100/drift_long_diff    0.58 mm/sqrt(cm)
-/Geometry/Next100/ELtransv_diff      0.38 mm/sqrt(cm)
+/Geometry/Next100/drift_v            0.91 mm/microsecond
+/Geometry/Next100/EL_drift_v         5.14 mm/microsecond
+
+/Geometry/Next100/drift_transv_diff  1.45 mm/sqrt(cm)
+/Geometry/Next100/drift_long_diff    0.64 mm/sqrt(cm)
+
+/Geometry/Next100/ELtransv_diff      0.36 mm/sqrt(cm)
 /Geometry/Next100/ELlong_diff        0.24 mm/sqrt(cm)
-/Geometry/Next100/EL_field           9    kV/cm
+
+/Geometry/Next100/EL_field           8.8  kV/cm
 /Geometry/Next100/e_lifetime         50   ms
+
+/Geometry/Next100/TPB_QE       0.65
+/Geometry/Next100/TPB_QE_EP    0.65
+/Geometry/Next100/TPB_QE_SIPM  0.65
+/Geometry/Next100/TPB_QE_SIPMB 0.65
+/Geometry/Next100/tpb_thickn  3.5 micrometer
+
+# includes 0.75 for EL emperical gain eqn, and realistic mesh scaling
+/Geometry/Next100/el_scale 1.06
+
+# old value was 16670 
+/Geometry/Next100/sc_yield 16670 1/MeV
 
 # persistency
 /nexus/random_seed             100
