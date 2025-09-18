@@ -12,7 +12,7 @@ PRESSURE=$3
 echo "The pressure is: ${PRESSURE}" 
 
 
-echo "JOBID $1 running on `whoami`@`hostname`"
+echo "JOBID ${JOBID} running on `whoami`@`hostname`"
 
 start=`date +%s`
 
