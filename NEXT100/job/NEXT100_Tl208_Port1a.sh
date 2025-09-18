@@ -56,7 +56,7 @@ python GetGammaTables.py NEXT100_Tl208_Port1a_sophronia_${JOBID}.h5 NEXT100_Tl20
 
 rm NEXT100_Tl208_Port1a.h5
 rm NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
-# rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
+rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
 rm *LT*
 rm *PSF*
 rm *map*
