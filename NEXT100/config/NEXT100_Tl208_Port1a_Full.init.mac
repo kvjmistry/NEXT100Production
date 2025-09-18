@@ -8,11 +8,15 @@
 ## ----------------------------------------------------------------------------
 
 /PhysicsList/RegisterPhysics G4EmStandardPhysics_option4
+/PhysicsList/RegisterPhysics G4EmExtraPhysics
 /PhysicsList/RegisterPhysics G4DecayPhysics
 /PhysicsList/RegisterPhysics G4RadioactiveDecayPhysics
+/PhysicsList/RegisterPhysics G4HadronElasticPhysicsHP
+/PhysicsList/RegisterPhysics G4HadronPhysicsQGSP_BERT_HP
+/PhysicsList/RegisterPhysics G4StoppingPhysics
+/PhysicsList/RegisterPhysics G4IonPhysics
 /PhysicsList/RegisterPhysics NexusPhysics
 /PhysicsList/RegisterPhysics G4StepLimiterPhysics
-
 /nexus/RegisterGeometry Next100
 
 /nexus/RegisterGenerator IonGenerator

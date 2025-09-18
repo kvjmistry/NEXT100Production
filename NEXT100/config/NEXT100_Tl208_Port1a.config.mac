@@ -22,6 +22,7 @@
 /Geometry/Next100/gas depletedXe
 /Geometry/PmtR11410/time_binning 25. nanosecond
 /Geometry/Next100/sipm_time_binning  1. microsecond
+/Geometry/Next100/lab_walls false
 
 ##### GENERATOR #####
 /Generator/IonGenerator/atomic_number 81
@@ -29,7 +30,6 @@
 /Generator/IonGenerator/region PORT_1a
 
 /Actions/DefaultEventAction/min_energy 1.0 MeV
-#/Actions/DefaultEventAction/min_energy 2.5 MeV
 /Actions/DefaultEventAction/max_energy 2.8 MeV
 
 ##### PERSISTENCY #####
