@@ -36,7 +36,7 @@ echo "N_EVENTS: ${N_EVENTS}"
 EID=$((${N_EVENTS}*${JOBID} + ${N_EVENTS}))
 SEED=$((${JOBID} + 1))
 echo "The seed number is: ${SEED}" 
-echo "The EID number is: ${SEED}" 
+echo "The EID number is: ${EID}" 
 
 # Change the config in the files
 sed -i "s#.*random_seed.*#/nexus/random_seed ${SEED}#" ${CONFIG}
