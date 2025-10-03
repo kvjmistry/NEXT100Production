@@ -36,17 +36,18 @@
 /Geometry/Next100/EL_field           8.8  kV/cm
 /Geometry/Next100/e_lifetime         50   ms
 
-/Geometry/Next100/TPB_QE       0.65
-/Geometry/Next100/TPB_QE_EP    0.65
-/Geometry/Next100/TPB_QE_SIPM  0.65
-/Geometry/Next100/TPB_QE_SIPMB 0.65
-/Geometry/Next100/tpb_thickn  3.5 micrometer
+# For tuned simulation
+#/Geometry/Next100/TPB_QE       0.65
+#/Geometry/Next100/TPB_QE_EP    0.65
+#/Geometry/Next100/TPB_QE_SIPM  0.65
+#/Geometry/Next100/TPB_QE_SIPMB 0.65
+#/Geometry/Next100/tpb_thickn  3.5 micrometer
 
 # includes 0.75 for EL emperical gain eqn, and realistic mesh scaling
-/Geometry/Next100/el_scale 1.06
+#/Geometry/Next100/el_scale 1.06
 
 # old value was 16670 
-/Geometry/Next100/sc_yield 16670 1/MeV
+#/Geometry/Next100/sc_yield 16670 1/MeV
 
 # persistency
 /nexus/random_seed             100
