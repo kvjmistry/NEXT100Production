@@ -34,7 +34,7 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/Production/$(job
 +JobDurationCategory = "Medium"
 
 # Use a singularity image to submit the file. The image should be stored in the protected area of your workspace
-container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv14.sif
+container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv15.sif
 
 # Use this one for tuned nexus
 #container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv12.sif
@@ -51,4 +51,4 @@ request_disk = 7GB
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 10000
+queue 5000
