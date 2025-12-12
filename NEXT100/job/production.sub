@@ -45,7 +45,7 @@ container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv15.
 requirements = (Arch == "X86_64" && TARGET.GLIDEIN_ResourceName =!= "Lehigh - Hawk" && TARGET.GLIDEIN_ResourceName =!= "UA-LR-ITS-EP")
 request_cpus = 1
 request_memory = 4GB
-request_disk = 7GB
+request_disk = 8GB
 
 # If submitting more than 10k jobs use this statement
 max_idle = 2000
