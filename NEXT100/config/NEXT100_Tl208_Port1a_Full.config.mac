@@ -4,7 +4,6 @@
 ## Configuration macro to simulate decays of the Th calibration source
 ## from one of the vessel ports in the NEXT-100 detector. Uses full simulation.
 ##
-## Note this uses a untagged version of nexus with some updates for tuning the sim
 ## The NEXT Collaboration
 ## ----------------------------------------------------------------------------
 
@@ -35,30 +34,20 @@
 /Geometry/Next100/EL_field           8.8  kV/cm
 /Geometry/Next100/e_lifetime         50   ms
 
-/Geometry/Next100/TPB_QE       0.65
-/Geometry/Next100/TPB_QE_EP    0.65
-/Geometry/Next100/TPB_QE_SIPM  0.65
-/Geometry/Next100/TPB_QE_SIPMB 0.65
-/Geometry/Next100/tpb_thickn  3.5 micrometer
-
 /Geometry/PmtR11410/time_binning 25. nanosecond
 /Geometry/Next100/sipm_time_binning  1. microsecond
 
-# includes 0.75 for EL emperical gain eqn, and realistic mesh scaling
-/Geometry/Next100/el_scale 1.06
 
 # old value was 16670 
-/Geometry/Next100/sc_yield 16670 1/MeV
+#/Geometry/Next100/sc_yield 16670 1/MeV
 
 ##### GENERATOR #####
 /Generator/IonGenerator/atomic_number 81
 /Generator/IonGenerator/mass_number 208
 /Generator/IonGenerator/region PORT_1a
 
-#/Actions/DefaultEventAction/min_energy 1.0 MeV
-/Actions/DefaultEventAction/min_energy 2.0 MeV
-/Actions/DefaultEventAction/max_energy 2.8 MeV
-/Actions/DefaultEventAction/max_save_events 1
+/Actions/DefaultEventAction/min_energy 1.45 MeV
+/Actions/DefaultEventAction/min_energy 1.65 MeV
 
 ##### PERSISTENCY #####
 /nexus/persistency/output_file NEXT100_Tl208_Port1a_Full
