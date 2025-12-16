@@ -1,10 +1,10 @@
 # nexus.sub
 
 # The job title here.
-jobname=NEXT100_Kr83m
+#jobname=NEXT100_Kr83m
 # jobname=NEXT100_Kr83m_Full
 # jobname=NEXT100_Tl208_Port1a
-#jobname=NEXT100_Tl208_Port1a_Full
+jobname=NEXT100_Tl208_Port1a_Full
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
 HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
@@ -31,13 +31,14 @@ transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar
 transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/Production/$(jobname)/$(jobname)_$(Cluster)_$(NewProcess).tar"
 
 # Specify Job duration category as "Medium" (expected runtime <10 hr) or "Long" (expected runtime <20 hr). 
-+JobDurationCategory = "Medium"
+#+JobDurationCategory = "Medium"
++JobDurationCategory = "Long"
 
 # Use a singularity image to submit the file. The image should be stored in the protected area of your workspace
-container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv15.sif
+#container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv15.sif
 
-# Use this one for tuned nexus
-#container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv12.sif
+# Use this one for nexus test
+container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/nexus_gm.sif
 
 
 # Tell HTCondor requirements (e.g., operating system) your job needs, 
