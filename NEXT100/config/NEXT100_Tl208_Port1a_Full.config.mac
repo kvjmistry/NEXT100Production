@@ -47,7 +47,7 @@
 /Generator/IonGenerator/region PORT_1a
 
 /Actions/DefaultEventAction/min_energy 1.45 MeV
-/Actions/DefaultEventAction/min_energy 1.65 MeV
+/Actions/DefaultEventAction/max_energy 1.65 MeV
 
 ##### PERSISTENCY #####
 /nexus/persistency/output_file NEXT100_Tl208_Port1a_Full
