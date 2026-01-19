@@ -3,6 +3,8 @@
 echo "Starting Job" 
 
 JOBID=$1
+#SHIFT=10001
+#JOBID=$((JOBID + SHIFT))
 echo "The JOBID number is: ${JOBID}" 
 
 JOBNAME=$2
@@ -25,7 +27,7 @@ tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
 # Set the configurable variables
-N_EVENTS=5000
+N_EVENTS=1000
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 
