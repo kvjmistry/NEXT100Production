@@ -22,24 +22,20 @@
 /Geometry/Next100/pressure 4.0 bar
 /Geometry/Next100/gas depletedXe
 
-/Geometry/Next100/drift_v            0.91 mm/microsecond
-/Geometry/Next100/EL_drift_v         5.14 mm/microsecond
+/Geometry/PmtR11410/time_binning     25. nanosecond
+/Geometry/Next100/sipm_time_binning  1. microsecond
 
-/Geometry/Next100/drift_transv_diff  1.45 mm/sqrt(cm)
-/Geometry/Next100/drift_long_diff    0.64 mm/sqrt(cm)
+/Geometry/Next100/drift_v            0.87 mm/microsecond
+/Geometry/Next100/EL_drift_v         5.16 mm/microsecond
+
+/Geometry/Next100/drift_transv_diff  2.01 mm/sqrt(cm)
+/Geometry/Next100/drift_long_diff    0.58 mm/sqrt(cm)
 
 /Geometry/Next100/ELtransv_diff      0.36 mm/sqrt(cm)
 /Geometry/Next100/ELlong_diff        0.24 mm/sqrt(cm)
 
 /Geometry/Next100/EL_field           8.8  kV/cm
 /Geometry/Next100/e_lifetime         50   ms
-
-/Geometry/PmtR11410/time_binning 25. nanosecond
-/Geometry/Next100/sipm_time_binning  1. microsecond
-
-
-# old value was 16670 
-#/Geometry/Next100/sc_yield 16670 1/MeV
 
 ##### GENERATOR #####
 /Generator/IonGenerator/atomic_number 81
@@ -53,3 +49,8 @@
 /nexus/persistency/output_file NEXT100_Tl208_Port1a_Full
 /nexus/random_seed            9800
 /nexus/persistency/start_id   9800
+
+### PHYSICS
+/PhysicsList/Nexus/clustering           true
+/PhysicsList/Nexus/drift                true
+/PhysicsList/Nexus/electroluminescence  true

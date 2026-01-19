@@ -21,6 +21,8 @@
 /nexus/RegisterRunAction      DefaultRunAction
 /nexus/RegisterEventAction    DefaultEventAction
 /nexus/RegisterTrackingAction DefaultTrackingAction
+/nexus/RegisterSteppingAction DefaultSteppingAction
+/nexus/RegisterStackingAction DefaultStackingAction
 
 # persistency
 /nexus/RegisterPersistencyManager PersistencyManager
