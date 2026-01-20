@@ -25,7 +25,7 @@ tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
 # Set the configurable variables
-N_EVENTS=300 # will give ~1 event per job. Some jobs 0 events
+N_EVENTS=0
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 
@@ -46,7 +46,27 @@ cat ${CONFIG}
 
 # Generation + Reco
 echo "Running NEXUS and IC" 
-nexus -n $N_EVENTS ${INIT}
+
+# Keep running NEXUS till we have more than one saved event...
+
+while true; do
+    N_EVENTS=$((N_EVENTS + 100))
+
+    echo "Running $N_EVENTS total events"
+    nexus -n $N_EVENTS ${INIT}
+
+    python3 CheckSavedEvents.py "$N_EVENTS"
+    rc=$? # get the exit code of last run event
+
+    if [ "$rc" -gt 0 ]; then
+        echo "Got an event, end loop"
+        break
+    else
+        echo "No events saved, continue..."
+    fi
+done
+
+
 python compress_nexus.py NEXT100_Tl208_Port1a_Full.h5 NEXT100_Tl208_Port1a_Full_nexus_${JOBID}.h5
 # city buffy    buffyTemplate.conf    -i NEXT100_Tl208_Port1a_Full_nexus_${JOBID}.h5    -o NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5
 # city hypathia hypathiaTemplate.conf -i NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5    -o NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5
