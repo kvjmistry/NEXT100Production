@@ -73,7 +73,13 @@ city hypathia hypathiaTemplate.conf -i NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.
 city sophronia sophroniaTemplate.conf -i NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5 -o NEXT100_Tl208_Port1a_Full_sophronia_${JOBID}.h5
 
 rm NEXT100_Tl208_Port1a_Full.h5
-# rm NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5
+
+# Only keep first 1000 files for validation purposes
+if (( JOBID > 1000 )); then
+    rm NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5
+    rm NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5
+fi
+
 rm *LT*
 rm *PSF*
 rm *map*
