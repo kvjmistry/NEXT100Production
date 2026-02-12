@@ -3,7 +3,8 @@
 # The job title here.
 #jobname=NEXT100_Kr83m
 #jobname=NEXT100_Kr83m_Full
-jobname=NEXT100_Tl208_Port1a
+#jobname=NEXT100_Tl208_Port1a
+jobname=NEXT100_Tl208_Port1a_DEP
 #jobname=NEXT100_Tl208_Port1a_Full
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
