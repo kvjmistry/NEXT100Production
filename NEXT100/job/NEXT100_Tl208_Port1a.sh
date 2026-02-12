@@ -41,7 +41,7 @@ if [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_DEP" ]]; then
     sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.65 MeV#" ${CONFIG}
 else
     echo "Using full energy spectrum configuration"
-    N_EVENTS=12000 # for 1.00 - 2.80 MeV ~ 100 events per job
+    N_EVENTS=13000 # for 1.00 - 2.80 MeV ~ 100 events per job
     sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.0 MeV#" ${CONFIG}
     sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 2.8 MeV#" ${CONFIG}
 fi
@@ -72,6 +72,7 @@ city detsim    detsimTemplate.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JO
 city hypathia  hypathiaTemplate.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
 city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
+# For brem analysis
 python3 GetGammaTables.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_GammaTables_${JOBID}.h5
 
 rm ${JOBNAME}.h5
