@@ -59,12 +59,16 @@ city sophronia sophroniaTemplate.conf -i NEXT100_Tl208_Port1a_hypathia_${JOBID}.
 python GetGammaTables.py NEXT100_Tl208_Port1a_sophronia_${JOBID}.h5 NEXT100_Tl208_Port1a_GammaTables_${JOBID}.h5
 
 rm NEXT100_Tl208_Port1a.h5
-rm NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
-rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
 rm *LT*
 rm *PSF*
 rm *map*
 rm GetGammaTables.py
+
+# Only keep first 1000 files for validation purposes
+if (( JOBID > 1000 )); then
+    rm NEXT100_Tl208_Port1a_detsim_${JOBID}.h5
+    rm NEXT100_Tl208_Port1a_hypathia_${JOBID}.h5
+fi
 
 ls -ltrh
 
