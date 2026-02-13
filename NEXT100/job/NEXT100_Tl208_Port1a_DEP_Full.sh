@@ -3,6 +3,8 @@
 echo "Starting Job" 
 
 JOBID=$1
+# SHIFT=10001
+# JOBID=$((JOBID + SHIFT))
 echo "The JOBID number is: ${JOBID}" 
 
 JOBNAME=$2
@@ -40,6 +42,9 @@ echo "The seed number is: ${SEED}"
 sed -i "s#.*random_seed.*#/nexus/random_seed ${SEED}#" ${CONFIG}
 sed -i "s#.*start_id.*#/nexus/persistency/start_id ${EID}#" ${CONFIG}
 
+# Make sure output file name is consistent
+sed -i "s#.*output_file.*#/nexus/persistency/output_file ${JOBNAME}#" ${CONFIG}
+
 # Print out the config and init files
 cat ${INIT}
 cat ${CONFIG}
@@ -67,17 +72,17 @@ while true; do
 done
 
 
-python3 compress_nexus.py NEXT100_Tl208_Port1a_Full.h5 NEXT100_Tl208_Port1a_Full_nexus_${JOBID}.h5
-city buffy    buffyTemplate.conf    -i NEXT100_Tl208_Port1a_Full_nexus_${JOBID}.h5    -o NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5
-city hypathia hypathiaTemplate.conf -i NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5    -o NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5
-city sophronia sophroniaTemplate.conf -i NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5 -o NEXT100_Tl208_Port1a_Full_sophronia_${JOBID}.h5
+python3 compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
+city buffy    buffyTemplate.conf      -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_buffy_${JOBID}.h5
+city hypathia hypathiaTemplate.conf   -i ${JOBNAME}_buffy_${JOBID}.h5    -o ${JOBNAME}_hypathia_${JOBID}.h5
+city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
-rm NEXT100_Tl208_Port1a_Full.h5
+rm ${JOBNAME}.h5
 
 # Only keep first 1000 files for validation purposes
 if (( JOBID > 1000 )); then
-    rm NEXT100_Tl208_Port1a_Full_buffy_${JOBID}.h5
-    rm NEXT100_Tl208_Port1a_Full_hypathia_${JOBID}.h5
+    rm ${JOBNAME}_buffy_${JOBID}.h5
+    rm ${JOBNAME}_hypathia_${JOBID}.h5
 fi
 
 rm *LT*
@@ -87,7 +92,7 @@ rm *map*
 ls -ltrh
 
 echo "Taring the h5 files"
-tar -cvf NEXT100_Tl208_Port1a_Full.tar *.h5
+tar -cvf ${JOBNAME}.tar *.h5
 
 # Cleanup
 rm *.h5

@@ -26,4 +26,4 @@
 /nexus/RegisterSteppingAction DefaultSteppingAction
 /nexus/RegisterStackingAction DefaultStackingAction
 
-/nexus/RegisterMacro NEXT100_Tl208_Port1a_Full.config.mac
+/nexus/RegisterMacro NEXT100_Tl208_Port1a_DEP_Full.config.mac
