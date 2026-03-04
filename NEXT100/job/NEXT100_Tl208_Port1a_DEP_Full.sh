@@ -27,14 +27,13 @@ tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
 # Set the configurable variables
-N_EVENTS=0
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 
+EID_BUFFER=30000 # should be a reasonable buffer between jobs to make unique event ids
+echo "EID_BUFFER ${EID_BUFFER}"
+EID=$((${EID_BUFFER}*${JOBID} + ${EID_BUFFER}))
 
-echo "N_EVENTS: ${N_EVENTS}"
-
-EID=$((${N_EVENTS}*${JOBID} + ${N_EVENTS}))
 SEED=$((${JOBID} + 1))
 echo "The seed number is: ${SEED}" 
 
@@ -53,6 +52,7 @@ cat ${CONFIG}
 echo "Running NEXUS and IC" 
 
 # Keep running NEXUS till we have more than one saved event...
+N_EVENTS=0
 
 while true; do
     N_EVENTS=$((N_EVENTS + 100))
