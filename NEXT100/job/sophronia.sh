@@ -37,9 +37,9 @@ cat sophroniaTemplate.conf
 # Reco
 echo "Running sophronia" 
 
-# update the filename
-fileout="${INFILE/hypathia/sophronia}"
-fileout="${fileout%.h5}_lowth.h5"
+# Update the filename
+fileout="${INFILE/hypathia/sophronia}"       # replace name
+fileout="${fileout%_[0-9]*.h5}_lowth.h5"     # remove final _<digits>.h5 and add _lowth.h5
 
 city sophronia sophroniaTemplate.conf -i $INFILE -o ${fileout}
 
