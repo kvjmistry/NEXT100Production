@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def MakeList(jobname, recostage_in, recostage_out, diff):
+def MakeList(jobname, recostage_in, recostage_out):
     # Define the local directory path
     local_path = f"/ospool/ap40/data/krishan.mistry/job/Production/{jobname}/{recostage_in}/"
 
