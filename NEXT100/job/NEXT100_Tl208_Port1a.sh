@@ -39,6 +39,11 @@ if [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_DEP" ]]; then
     N_EVENTS=100000 # for 1.35 - 1.85 DEP MeV ~ 100-150 events per job
     sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.35 MeV#" ${CONFIG}
     sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.85 MeV#" ${CONFIG}
+elif [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_LE" ]]; then
+    echo "Using low energy spectrum configuration"
+    N_EVENTS=25000 # for 400 keV - 1.7 MeV
+    sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 0.4 MeV#" ${CONFIG}
+    sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.7 MeV#" ${CONFIG}
 else
     echo "Using full energy spectrum configuration"
     N_EVENTS=13000 # for 1.00 - 2.80 MeV ~ 100 events per job
