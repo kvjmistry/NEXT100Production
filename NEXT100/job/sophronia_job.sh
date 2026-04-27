@@ -40,6 +40,7 @@ echo "Running sophronia"
 # Update the filename
 fileout="${INFILE/hypathia/sophronia}"       # replace name
 fileout="${fileout%_[0-9]*.h5}_lowth.h5"     # remove final _<digits>.h5 and add _lowth.h5
+# fileout="${fileout%_[0-9]*.h5}.h5" # Just remove digits
 
 city sophronia sophroniaTemplate.conf -i $INFILE -o ${fileout}
 
