@@ -36,9 +36,9 @@ INIT=NEXT100_Tl208_Port1a.init.mac
 # Set the configurable variables
 if [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_DEP" ]]; then
     echo "Using Double escape peak configurations"
-    N_EVENTS=100000 # for 1.45 - 1.65 DEP MeV ~ 100-150 events per job
-    sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.45 MeV#" ${CONFIG}
-    sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.65 MeV#" ${CONFIG}
+    N_EVENTS=100000 # for 1.35 - 1.85 DEP MeV ~ 100-150 events per job
+    sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.35 MeV#" ${CONFIG}
+    sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.85 MeV#" ${CONFIG}
 else
     echo "Using full energy spectrum configuration"
     N_EVENTS=13000 # for 1.00 - 2.80 MeV ~ 100 events per job
