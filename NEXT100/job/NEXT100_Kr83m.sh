@@ -51,7 +51,12 @@ echo "Running NEXUS and IC"
 nexus -n $N_EVENTS ${INIT}
 python compress_nexus.py NEXT100_Kr83m.h5 NEXT100_Kr83m_nexus_${JOBID}.h5
 city detsim   detsimTemplate.conf   -i NEXT100_Kr83m_nexus_${JOBID}.h5    -o NEXT100_Kr83m_detsim_${JOBID}.h5
-city hypathia hypathiaTemplate.conf -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT100_Kr83m_hypathia_${JOBID}.h5
+
+# Options for hypathia
+#city hypathia hypathiaTemplate.conf -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT100_Kr83m_hypathia_${JOBID}.h5
+city hypathia hypathiaPyrrha.conf -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT100_Kr83m_hypathia_${JOBID}.h5
+
+
 city dorothea dorotheaTemplate.conf -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_dorothea_${JOBID}.h5
 
 rm NEXT100_Kr83m.h5

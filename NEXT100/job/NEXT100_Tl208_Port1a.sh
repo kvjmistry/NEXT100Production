@@ -39,7 +39,7 @@ if [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_DEP" ]]; then
     N_EVENTS=100000 # for 1.35 - 1.85 DEP MeV ~ 100-150 events per job
     sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.35 MeV#" ${CONFIG}
     sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.85 MeV#" ${CONFIG}
-elif [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_full" ]]; then
+elif [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_FSPECT" ]]; then
     echo "Using full energy spectrum configuration and Th decays"
     N_EVENTS=25000 # for 400 keV - 3.0 MeV
     sed -i "s#.*atomic_number.*#/Generator/IonGenerator/atomic_number 90#" ${CONFIG}
