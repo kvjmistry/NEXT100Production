@@ -26,7 +26,7 @@ echo "untaring files"
 tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
-# Set the configurable variables
+# Set the configurable variables # ideally for Kr map we need 4M events
 N_EVENTS=500
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
