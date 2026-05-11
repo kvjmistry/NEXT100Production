@@ -27,7 +27,7 @@ tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
 # Set the configurable variables
-N_EVENTS=1000
+N_EVENTS=500
 CONFIG=${JOBNAME}.config.mac
 INIT=${JOBNAME}.init.mac
 

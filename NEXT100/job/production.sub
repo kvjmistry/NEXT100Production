@@ -1,11 +1,11 @@
 # nexus.sub
 
 # The job title here.
-#jobname=NEXT100_Kr83m
+jobname=NEXT100_Kr83m
 #jobname=NEXT100_Kr83m_Full
 #jobname=NEXT100_Tl208_Port1a
 #jobname=NEXT100_Tl208_Port1a_DEP
-jobname=NEXT100_Tl208_Port1a_LE
+#jobname=NEXT100_Tl208_Port1a_LE
 #jobname=NEXT100_Tl208_Port1a_DEP_Full
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
@@ -41,10 +41,6 @@ transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/Production/$(job
 # Use a singularity image to submit the file. The image should be stored in the protected area of your workspace
 container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/icnexusv16.sif
 
-# Use this one for nexus test
-#container_image = osdf:///ospool/ap40/data/krishan.mistry/containers/nexus_gm_v4.sif
-
-
 # Tell HTCondor requirements (e.g., operating system) your job needs, 
 # what amount of compute resources each job will need on the computer where it runs.
 requirements = (Arch == "X86_64" && TARGET.GLIDEIN_ResourceName =!= "Lehigh - Hawk" && TARGET.GLIDEIN_ResourceName =!= "UA-LR-ITS-EP")
@@ -57,4 +53,4 @@ request_disk = 5GB
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 10000
+queue 4000
