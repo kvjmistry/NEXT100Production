@@ -82,6 +82,9 @@ city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JO
 # For brem analysis
 python3 GetGammaTables.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_GammaTables_${JOBID}.h5
 
+# For getting blob information
+python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
+
 rm ${JOBNAME}.h5
 rm *LT*
 rm *PSF*

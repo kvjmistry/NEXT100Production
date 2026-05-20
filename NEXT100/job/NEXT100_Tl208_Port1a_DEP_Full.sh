@@ -77,6 +77,9 @@ city buffy    buffyTemplate.conf      -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JO
 city hypathia hypathiaTemplate.conf   -i ${JOBNAME}_buffy_${JOBID}.h5    -o ${JOBNAME}_hypathia_${JOBID}.h5
 city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
+# For getting blob information
+python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
+
 rm ${JOBNAME}.h5
 
 # Only keep first 1000 files for validation purposes
