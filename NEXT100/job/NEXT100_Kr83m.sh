@@ -58,6 +58,7 @@ city hypathia hypathiaPyrrha.conf -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT1
 
 
 city dorothea dorotheaTemplate.conf -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_dorothea_${JOBID}.h5
+city sophronia sophroniaTemplate.conf -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_sophronia_${JOBID}.h5
 
 rm NEXT100_Kr83m.h5
 rm *LT*
