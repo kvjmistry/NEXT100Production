@@ -1,5 +1,5 @@
 ## ----------------------------------------------------------------------------
-## nexus | NEXT100_Tl208_port1a.init.mac
+## nexus | NEXT100_Th228_port1a.init.mac
 ##
 ## Configuration macro to simulate decays of the Th calibration source
 ## from one of the vessel ports in the NEXT-100 detector.
@@ -23,4 +23,4 @@
 /nexus/RegisterEventAction DefaultEventAction
 /nexus/RegisterTrackingAction DefaultTrackingAction
 
-/nexus/RegisterMacro NEXT100_Tl208_Port1a.config.mac
+/nexus/RegisterMacro NEXT100_Th228_Port1a.config.mac

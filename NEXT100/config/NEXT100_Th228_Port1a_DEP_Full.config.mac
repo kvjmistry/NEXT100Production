@@ -1,5 +1,5 @@
 ## ----------------------------------------------------------------------------
-## nexus | NEXT100_Tl208_port1a_Full.config.mac
+## nexus | NEXT100_Th228_port1a_Full.config.mac
 ##
 ## Configuration macro to simulate decays of the Th calibration source
 ## from one of the vessel ports in the NEXT-100 detector. Uses full simulation.
@@ -38,15 +38,15 @@
 /Geometry/Next100/e_lifetime         50   ms
 
 ##### GENERATOR #####
-/Generator/IonGenerator/atomic_number 81
-/Generator/IonGenerator/mass_number 208
+/Generator/IonGenerator/atomic_number 90
+/Generator/IonGenerator/mass_number 228
 /Generator/IonGenerator/region PORT_1a
 
 /Actions/DefaultEventAction/min_energy 1.35 MeV
 /Actions/DefaultEventAction/max_energy 1.85 MeV
 
 ##### PERSISTENCY #####
-/nexus/persistency/output_file NEXT100_Tl208_Port1a_DEP_Full
+/nexus/persistency/output_file NEXT100_Th228_Port1a_DEP_Full
 /nexus/random_seed            9800
 /nexus/persistency/start_id   9800
 

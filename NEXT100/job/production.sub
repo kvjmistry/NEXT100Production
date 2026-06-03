@@ -3,10 +3,10 @@
 # The job title here.
 jobname=NEXT100_Kr83m
 #jobname=NEXT100_Kr83m_Full
-#jobname=NEXT100_Tl208_Port1a
-#jobname=NEXT100_Tl208_Port1a_DEP
-#jobname=NEXT100_Tl208_Port1a_FSPECT
-#jobname=NEXT100_Tl208_Port1a_DEP_Full
+#jobname=NEXT100_Th228_Port1a
+#jobname=NEXT100_Th228_Port1a_DEP
+#jobname=NEXT100_Th228_Port1a_FSPECT
+#jobname=NEXT100_Th228_Port1a_DEP_Full
 
 OSDF_LOCATION=osdf:///ospool/ap40/data/krishan.mistry
 HOME_LOCATION=/home/krishan.mistry/code/NEXT100Production/NEXT100
@@ -18,7 +18,7 @@ pressure=4bar
 NewProcess = $(Process)
 
 executable = $(jobname).sh
-#executable = NEXT100_Tl208_Port1a.sh
+#executable = NEXT100_Th228_Port1a.sh
 
 arguments = $(NewProcess) $(jobname) $(pressure)
 
