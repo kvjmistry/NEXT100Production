@@ -29,7 +29,7 @@ rm files_${PRESSURE}.tar
 
 N_EVENTS=200
 
-# Use same template for full energy range and DEP events
+# Use same  for full energy range and DEP events
 CONFIG=NEXT100_alpha.config.mac
 INIT=NEXT100_alpha.init.mac
 
@@ -55,9 +55,9 @@ cat ${CONFIG}
 echo "Running NEXUS and IC" 
 nexus -n $N_EVENTS ${INIT}
 python compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
-city detsim    detsimTemplate.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
+city detsim    detsim.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
 city hypathia  hypathiaPyrrha.conf    -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
-city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
+city sophronia sophronia.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
 rm ${JOBNAME}.h5
 rm *LT*
