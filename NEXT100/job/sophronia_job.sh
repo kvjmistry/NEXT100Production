@@ -29,10 +29,10 @@ rm files_${PRESSURE}.tar
 
 
 # Make sure output file name is consistent
-sed -i "s#.*q_thr.*#q_thr = 0 * pes#" sophroniaTemplate.conf
+sed -i "s#.*q_thr.*#q_thr = 0 * pes#" sophronia.conf
 
 echo "Printing Sophronia file"
-cat sophroniaTemplate.conf
+cat sophronia.conf
 
 # Reco
 echo "Running sophronia" 
@@ -40,8 +40,9 @@ echo "Running sophronia"
 # Update the filename
 fileout="${INFILE/hypathia/sophronia}"       # replace name
 fileout="${fileout%_[0-9]*.h5}_lowth.h5"     # remove final _<digits>.h5 and add _lowth.h5
+# fileout="${fileout%_[0-9]*.h5}.h5" # Just remove digits
 
-city sophronia sophroniaTemplate.conf -i $INFILE -o ${fileout}
+city sophronia sophronia.conf -i $INFILE -o ${fileout}
 
 rm *LT*
 rm *PSF*

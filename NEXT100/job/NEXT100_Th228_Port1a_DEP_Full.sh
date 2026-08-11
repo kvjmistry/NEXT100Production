@@ -73,9 +73,12 @@ done
 
 
 python3 compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
-city buffy    buffyTemplate.conf      -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_buffy_${JOBID}.h5
-city hypathia hypathiaTemplate.conf   -i ${JOBNAME}_buffy_${JOBID}.h5    -o ${JOBNAME}_hypathia_${JOBID}.h5
-city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
+city buffy     buffy.conf      -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_buffy_${JOBID}.h5
+city hypathia  hypathia.conf   -i ${JOBNAME}_buffy_${JOBID}.h5    -o ${JOBNAME}_hypathia_${JOBID}.h5
+city sophronia sophronia.conf  -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
+
+# For getting blob information
+python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
 
 rm ${JOBNAME}.h5
 

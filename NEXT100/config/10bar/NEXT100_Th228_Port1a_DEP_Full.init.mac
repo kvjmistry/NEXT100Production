@@ -1,0 +1,29 @@
+## ----------------------------------------------------------------------------
+## nexus | NEXT100_Th228_port1a_Full.init.mac
+##
+## Configuration macro to simulate decays of the Th calibration source
+## from one of the vessel ports in the NEXT-100 detector. Uses full simulation.
+##
+## The NEXT Collaboration
+## ----------------------------------------------------------------------------
+
+/PhysicsList/RegisterPhysics G4EmStandardPhysics_option4
+/PhysicsList/RegisterPhysics G4DecayPhysics
+/PhysicsList/RegisterPhysics G4RadioactiveDecayPhysics 
+/PhysicsList/RegisterPhysics G4StepLimiterPhysics
+/PhysicsList/RegisterPhysics G4OpticalPhysics
+/PhysicsList/RegisterPhysics NexusPhysics
+
+/nexus/RegisterGeometry Next100
+
+/nexus/RegisterGenerator IonGenerator
+
+/nexus/RegisterPersistencyManager PersistencyManager
+
+/nexus/RegisterRunAction DefaultRunAction
+/nexus/RegisterEventAction DefaultEventAction
+/nexus/RegisterTrackingAction DefaultTrackingAction
+/nexus/RegisterSteppingAction DefaultSteppingAction
+/nexus/RegisterStackingAction DefaultStackingAction
+
+/nexus/RegisterMacro NEXT100_Th228_Port1a_DEP_Full.config.mac

@@ -3,8 +3,8 @@
 echo "Starting Job" 
 
 JOBID=$1
-#SHIFT=10001
-#JOBID=$((JOBID + SHIFT))
+# SHIFT=10001
+# JOBID=$((JOBID + SHIFT))
 echo "The JOBID number is: ${JOBID}" 
 
 JOBNAME=$2
@@ -13,7 +13,8 @@ echo "The JOBNAME number is: ${JOBNAME}"
 PRESSURE=$3
 echo "The pressure is: ${PRESSURE}" 
 
-echo "JOBID ${JOBID}  running on `whoami`@`hostname`"
+
+echo "JOBID ${JOBID} running on `whoami`@`hostname`"
 
 start=`date +%s`
 
@@ -26,17 +27,21 @@ echo "untaring files"
 tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
-# Set the configurable variables # ideally for Kr map we need 4M events
-N_EVENTS=500
-CONFIG=${JOBNAME}.config.mac
-INIT=${JOBNAME}.init.mac
+N_EVENTS=200
 
+# Use same template for full energy range and DEP events
+CONFIG=NEXT100_single_eminus.config.mac
+INIT=NEXT100_single_eminus.init.mac
+
+# Make sure output file name is consistent
+sed -i "s#.*output_file.*#/nexus/persistency/output_file ${JOBNAME}#" ${CONFIG}
 
 echo "N_EVENTS: ${N_EVENTS}"
 
 EID=$((${N_EVENTS}*${JOBID} + ${N_EVENTS}))
 SEED=$((${JOBID} + 1))
 echo "The seed number is: ${SEED}" 
+echo "The EID number is: ${EID}" 
 
 # Change the config in the files
 sed -i "s#.*random_seed.*#/nexus/random_seed ${SEED}#" ${CONFIG}
@@ -49,27 +54,26 @@ cat ${CONFIG}
 # Generation + Reco
 echo "Running NEXUS and IC" 
 nexus -n $N_EVENTS ${INIT}
-python compress_nexus.py NEXT100_Kr83m.h5 NEXT100_Kr83m_nexus_${JOBID}.h5
-city detsim    detsim.conf     -i NEXT100_Kr83m_nexus_${JOBID}.h5    -o NEXT100_Kr83m_detsim_${JOBID}.h5
-city hypathia  hypathia.conf   -i NEXT100_Kr83m_detsim_${JOBID}.h5   -o NEXT100_Kr83m_hypathia_${JOBID}.h5
-city dorothea  dorothea.conf   -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_dorothea_${JOBID}.h5
-city sophronia sophronia.conf  -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_Kr83m_sophronia_${JOBID}.h5
+python compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
+city detsim    detsim.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
+city hypathia  hypathia.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
+city sophronia sophronia.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
-rm NEXT100_Kr83m.h5
+rm ${JOBNAME}.h5
 rm *LT*
 rm *PSF*
 rm *map*
 
 # Only keep first 1000 files for validation purposes
 if (( JOBID > 1000 )); then
-    rm NEXT100_Kr83m_detsim_${JOBID}.h5
-    rm NEXT100_Kr83m_hypathia_${JOBID}.h5
+    rm ${JOBNAME}_detsim_${JOBID}.h5
+    rm ${JOBNAME}_hypathia_${JOBID}.h5
 fi
 
 ls -ltrh
 
 echo "Taring the h5 files"
-tar -cvf NEXT100_Kr83m.tar *.h5
+tar -cvf ${JOBNAME}.tar *.h5
 
 # Cleanup
 rm *.h5

@@ -1,0 +1,34 @@
+## ----------------------------------------------------------------------------
+## nexus | NEXT100_single_eminus.init.mac
+##
+## Configuration macro to simulate single electrons in NEXT100
+##
+## The NEXT Collaboration
+## ----------------------------------------------------------------------------
+
+##### VERBOSITY #####
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+/process/em/verbose 0
+
+##### GEOMETRY #####
+/Geometry/Next100/pressure 4 bar
+/Geometry/Next100/elfield false
+/Geometry/Next100/max_step_size 1. mm
+/Geometry/Next100/gas depletedXe
+/Geometry/PmtR11410/time_binning 25. nanosecond
+/Geometry/Next100/sipm_time_binning  1. microsecond
+
+##### GENERATOR #####
+/Generator/SingleParticle/particle e-
+/Generator/SingleParticle/region ACTIVE
+
+/Generator/SingleParticle/min_energy 600 keV
+/Generator/SingleParticle/max_energy 600 keV
+
+##### PERSISTENCY #####
+/nexus/persistency/output_file NEXT100_single_eminus
+/nexus/random_seed            5
+/nexus/persistency/start_id   9800

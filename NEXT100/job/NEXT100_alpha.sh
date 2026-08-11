@@ -27,24 +27,11 @@ echo "untaring files"
 tar -xvf files_${PRESSURE}.tar
 rm files_${PRESSURE}.tar
 
-N_EVENTS=10
+N_EVENTS=200
 
-# Use same template for full energy range and DEP events
-CONFIG=NEXT100_Tl208_Port1a.config.mac
-INIT=NEXT100_Tl208_Port1a.init.mac
-
-# Set the configurable variables
-if [[ "$JOBNAME" == "NEXT100_Tl208_Port1a_DEP" ]]; then
-    echo "Using Double escape peak configurations"
-    N_EVENTS=100000 # for 1.45 - 1.65 DEP MeV ~ 100-150 events per job
-    sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.45 MeV#" ${CONFIG}
-    sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 1.65 MeV#" ${CONFIG}
-else
-    echo "Using full energy spectrum configuration"
-    N_EVENTS=13000 # for 1.00 - 2.80 MeV ~ 100 events per job
-    sed -i "s#.*min_energy.*#/Actions/DefaultEventAction/min_energy 1.0 MeV#" ${CONFIG}
-    sed -i "s#.*max_energy.*#/Actions/DefaultEventAction/max_energy 2.8 MeV#" ${CONFIG}
-fi
+# Use same  for full energy range and DEP events
+CONFIG=NEXT100_alpha.config.mac
+INIT=NEXT100_alpha.init.mac
 
 # Make sure output file name is consistent
 sed -i "s#.*output_file.*#/nexus/persistency/output_file ${JOBNAME}#" ${CONFIG}
@@ -68,23 +55,19 @@ cat ${CONFIG}
 echo "Running NEXUS and IC" 
 nexus -n $N_EVENTS ${INIT}
 python compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
-city detsim    detsimTemplate.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
-city hypathia  hypathiaTemplate.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
-city sophronia sophroniaTemplate.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
-
-# For brem analysis
-python3 GetGammaTables.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_GammaTables_${JOBID}.h5
+city detsim    detsim.conf            -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
+city hypathia  hypathiaPyrrha.conf    -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
+city sophronia sophronia.conf         -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
 rm ${JOBNAME}.h5
 rm *LT*
 rm *PSF*
 rm *map*
-rm GetGammaTables.py
 
 # Only keep first 1000 files for validation purposes
 if (( JOBID > 1000 )); then
     rm ${JOBNAME}_detsim_${JOBID}.h5
-    rm ${JOBNAME}_hypathia_${JOBID}.h5
+    # rm ${JOBNAME}_hypathia_${JOBID}.h5
 fi
 
 ls -ltrh
