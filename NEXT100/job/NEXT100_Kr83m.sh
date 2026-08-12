@@ -57,7 +57,6 @@ city sophronia sophronia.conf  -i NEXT100_Kr83m_hypathia_${JOBID}.h5 -o NEXT100_
 
 rm NEXT100_Kr83m.h5
 rm *LT*
-rm *PSF*
 rm *map*
 
 # Only keep first 1000 files for validation purposes

@@ -61,7 +61,6 @@ city sophronia sophronia.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_s
 
 rm ${JOBNAME}.h5
 rm *LT*
-rm *PSF*
 rm *map*
 
 # Only keep first 1000 files for validation purposes

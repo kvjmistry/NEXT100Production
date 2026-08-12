@@ -89,7 +89,6 @@ if (( JOBID > 1000 )); then
 fi
 
 rm *LT*
-rm *PSF*
 rm *map*
 
 ls -ltrh

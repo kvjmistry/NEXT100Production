@@ -85,7 +85,6 @@ python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
 
 rm ${JOBNAME}.h5
 rm *LT*
-rm *PSF*
 rm *map*
 rm GetGammaTables.py
 
