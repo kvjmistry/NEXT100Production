@@ -57,8 +57,8 @@ city sophronia  sophronia.conf -i NEXT100_Kr83m_Full_hypathia_${JOBID}.h5 -o NEX
 
 rm NEXT100_Kr83m_Full.h5
 
-# Only keep first 1000 files for validation purposes
-if (( JOBID > 1000 )); then
+# Only keep first 300 files for validation purposes (about 1%)
+if (( JOBID > 300 )); then
     rm NEXT100_Kr83m_Full_buffy_${JOBID}.h5
     rm NEXT100_Kr83m_Full_hypathia_${JOBID}.h5
 fi
