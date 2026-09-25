@@ -31,7 +31,8 @@ error  = jobs/$(jobname)_$(recostage)/$(pressure)/jobid$(NewProcess)/$(Cluster)_
 output = jobs/$(jobname)_$(recostage)/$(pressure)/jobid$(NewProcess)/$(Cluster)_$(NewProcess).out
 
 # Transfer input files
-transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar,$(OSDF_LOCATION)/job/Production/$(jobname)/hypathia/$(infile)
+#transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar,$(OSDF_LOCATION)/job/Production/$(jobname)/hypathia/$(infile)
+transfer_input_files = $(HOME_LOCATION)/tar/$(pressure)/files_$(pressure).tar,$(OSDF_LOCATION)/job/Production/$(jobname)/4bar_nexus/$(infile)
 
 # Transfer output files
 transfer_output_remaps = "$(jobname).tar = $(OSDF_LOCATION)/job/Production/$(jobname)/$(pressure)_$(recostage)/$(jobname)_$(Cluster)_$(NewProcess).tar"
