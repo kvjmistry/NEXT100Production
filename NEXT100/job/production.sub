@@ -2,10 +2,10 @@
 
 # The job title here.
 #jobname=NEXT100_Kr83m
-jobname=NEXT100_Kr83m_Full
+#jobname=NEXT100_Kr83m_Full
 #jobname=NEXT100_Th228_Port1a
 #jobname=NEXT100_Th228_Port1a_DEP
-#jobname=NEXT100_Th228_Port1a_FSPECT
+jobname=NEXT100_Th228_Port1a_FSPECT
 #jobname=NEXT100_Th228_Port1a_DEP_Full
 #jobname=NEXT100_alpha
 
@@ -54,4 +54,4 @@ request_disk = 5GB
 max_idle = 2000
 
 # Tell HTCondor the number of instances to run:
-queue 25000
+queue 10000

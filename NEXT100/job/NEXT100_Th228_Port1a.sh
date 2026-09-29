@@ -65,6 +65,14 @@ echo "The EID number is: ${EID}"
 sed -i "s#.*random_seed.*#/nexus/random_seed ${SEED}#" ${CONFIG}
 sed -i "s#.*start_id.*#/nexus/persistency/start_id ${EID}#" ${CONFIG}
 
+# Update the Kr Map
+# This is Irene processed map
+sed -i "s#.*filename.*#  filename    = "MC_3Dmap_fullsim_${PRESSURE}_202608_irene_median.h5",#" sophronia.conf
+
+# This is for pyrrha processed map 
+#sed -i "s#.*filename.*#  filename   = "MC_3Dmap_fullsim_${PRESSURE}_202608_median.h5",#" sophronia.conf
+cat sophronia.conf
+
 # Print out the config and init files
 cat ${INIT}
 cat ${CONFIG}
@@ -74,14 +82,18 @@ echo "Running NEXUS and IC"
 nexus -n $N_EVENTS ${INIT}
 python compress_nexus.py ${JOBNAME}.h5 ${JOBNAME}_nexus_${JOBID}.h5
 city detsim    detsim.conf    -i ${JOBNAME}_nexus_${JOBID}.h5    -o ${JOBNAME}_detsim_${JOBID}.h5
-city hypathia  hypathia.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
+
+# Choose which hypathia configuration to use
+city hypathia  hypathiaIrene.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
+#city hypathia  hypathia.conf  -i ${JOBNAME}_detsim_${JOBID}.h5   -o ${JOBNAME}_hypathia_${JOBID}.h5
+
 city sophronia sophronia.conf -i ${JOBNAME}_hypathia_${JOBID}.h5 -o ${JOBNAME}_sophronia_${JOBID}.h5
 
 # For brem analysis
 python3 GetGammaTables.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_GammaTables_${JOBID}.h5
 
 # For getting blob information
-python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
+# python3 Thekla.py ${JOBNAME}_sophronia_${JOBID}.h5 ${JOBNAME}_Thekla_${JOBID}.h5
 
 rm ${JOBNAME}.h5
 rm *LT*
