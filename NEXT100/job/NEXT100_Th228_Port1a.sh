@@ -67,7 +67,7 @@ sed -i "s#.*start_id.*#/nexus/persistency/start_id ${EID}#" ${CONFIG}
 
 # Update the Kr Map
 # This is Irene processed map
-sed -i "s#.*filename.*#  filename    = "MC_3Dmap_fullsim_${PRESSURE}_202608_irene_median.h5",#" sophronia.conf
+sed -i "s#.*filename.*#  filename    = \"MC_3Dmap_fullsim_${PRESSURE}_202608_irene_median.h5\",#" sophronia.conf
 
 # This is for pyrrha processed map 
 #sed -i "s#.*filename.*#  filename   = "MC_3Dmap_fullsim_${PRESSURE}_202608_median.h5",#" sophronia.conf
